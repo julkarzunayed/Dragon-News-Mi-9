@@ -4,14 +4,14 @@ import userLogo from "../../assets/user.png"
 
 const NavBar = () => {
     return (
-        <div className='flex justify-between items-center mt-6'>
+        <div className='flex justify-center p-4  items-center mt-6 relative'>
             <div className=""></div>
             <div className="flex gap-3 text-info-content">
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/about">About</NavLink>
                 <NavLink to="/career">Career</NavLink>
             </div>
-            <div className="flex  gap-3">
+            <div className="absolute right-0 flex  gap-3">
                 <img className='w-14' src={userLogo} alt="" />
                 <p className='bg-primary text-base-100 px-10 py-4 font-bold text-[20px]'>Login</p>
             </div>
