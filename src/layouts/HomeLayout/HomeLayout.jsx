@@ -16,17 +16,17 @@ const HomeLayout = () => {
                 <Marque></Marque>
                 <NavBar></NavBar>
             </header>
-            <main className='mt-20 grid grid-cols-12 gap-4 '>
-                <aside className="col-span-3 left-nav">
+            <main className='mt-20 grid grid-cols-12 gap-4 *:border'>
+                <aside className="col-span-3 left-nav h-fit sticky top-0">
                     <Suspense fallback={<span className="text-center loading loading-ring loading-xl"></span>}>
                         <AllCategory></AllCategory>
                     </Suspense>
                 </aside>
 
-                <section className="col-span-6 main">
+                <section className="col-span-6 main  ">
                     <Outlet></Outlet>
                 </section>
-                <aside className="col-span-3 right-nav">
+                <aside className="col-span-3 right-nav  h-fit  sticky top-0">
                     <LoginWith></LoginWith>
                     <FindUsOn></FindUsOn>
                     <QZon></QZon>
