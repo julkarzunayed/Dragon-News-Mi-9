@@ -1,18 +1,42 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const Register = () => {
+    const {createUser} = useContext(AuthContext);
+
+    const handleRegister = (e) => {
+        e.preventDefault();
+        const name = e.target.name.value;
+        const photoURL = e.target.photoURL.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        console.log({name, photoURL, email, password});
+
+        createUser(email, password)
+            .then((result) => {
+                console.log(result.user);
+            })
+            .catch(error => {
+                console.log(error.message, error.code)
+            })
+    }
+
+    
+
     return (
         <div>
             <div className="card bg-base-100 w-[90vw] sm:w-sm shrink-0 shadow-2xl">
                 <div className="card-body">
                     <h2 className='text-4xl font-bold text-neutral text-center'>Please Register</h2>
-                    <form className="fieldset">
+                    <form onSubmit={handleRegister} className="fieldset">
                         {/* Name */}
                         <label className="label">Name</label>
                         <input
                             type="text"
                             name='name'
+                            required
                             className="input w-full"
                             placeholder="Your Name" />
                         {/* Phot URL */}
@@ -27,6 +51,7 @@ const Register = () => {
                         <input
                             type="email"
                             name='email'
+                            required
                             className="input w-full"
                             placeholder="user@email.com" />
                         {/* password */}
@@ -34,6 +59,7 @@ const Register = () => {
                         <input
                             type="password"
                             name='password'
+                            required
                             className="input w-full"
                             placeholder="Password" />
                         {/* Button */}

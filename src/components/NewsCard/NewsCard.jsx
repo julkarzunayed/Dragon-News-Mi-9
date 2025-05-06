@@ -1,8 +1,10 @@
 import React from 'react';
 import { FaRegEye, FaShareAlt, FaStar } from 'react-icons/fa';
+import { Link, Navigate } from 'react-router';
 
 const NewsCard = ({ news }) => {
     const {
+        id,
         title,
         rating,
         total_view,
@@ -31,7 +33,11 @@ const NewsCard = ({ news }) => {
                 <h3 className="text-xl font-bold mb-2">{title}</h3>
                 <img src={thumbnail_url} alt="Thumbnail" className="rounded-lg my-4 w-full h-56 object-cover" />
                 <p className="text-info-content text-sm">{details.slice(0, 200)}...</p>
-                <button className="text-blue-500 hover:underline mt-2">Read More</button>
+                <Link
+                    to={`/read-more/${id}`}
+                    className="text-blue-500 hover:underline mt-2">
+                    Read More
+                </Link>
 
                 <div className="border-t border-base-300 pt-4 mt-4 flex items-center justify-between text-sm text-gray-600">
                     <div className="flex items-center space-x-1">
@@ -40,7 +46,7 @@ const NewsCard = ({ news }) => {
             <FaStar key={index} className="text-yellow-400" />
           ))} */}
                         {
-                            Array.from({length: rating.number}, (_, i) => <FaStar key={i} className="text-yellow-400" />)
+                            Array.from({ length: rating.number }, (_, i) => <FaStar key={i} className="text-yellow-400" />)
                         }
 
                         <span>{rating.number}</span>

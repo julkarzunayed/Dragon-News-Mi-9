@@ -5,6 +5,7 @@ import CategoryNews from "../pages/CategoryNews/CategoryNews";
 import Auth from "../pages/Auth/Auth";
 import LogIn from "../components/LogIn/LogIn";
 import Register from "../components/Register/Register";
+import ReadMore from "../pages/ReadMore/ReadMore";
 
 const router = createBrowserRouter([
     {
@@ -12,18 +13,11 @@ const router = createBrowserRouter([
         Component: HomeLayout,
         children: [
             {
-                // index: true,
-                Component: Home,
-                children: [
-                    {
-                        index: true,
-                        path: "/category/:id",
-                        loader: () => fetch("/data/news.json"),
-                        Component: CategoryNews
-                    }
-                ]
-            },
-            
+                index: true,
+                path: "/category/:id",
+                loader: () => fetch("/data/news.json"),
+                Component: CategoryNews
+            }
         ]
     },
     {
@@ -38,6 +32,15 @@ const router = createBrowserRouter([
                 Component: Register
             }
         ]
+    },
+    {
+        path: "read-more/:id",
+        Component: ReadMore,
+        loader: () => fetch("/data/news.json"),
+    },
+    {
+        path: "*",
+        element: <h2>HI You got an error</h2>
     }
 ]);
 
