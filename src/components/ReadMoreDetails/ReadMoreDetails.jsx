@@ -35,6 +35,6 @@ const ReadMoreDetails = ({id}) => {
             </div>
         </div>
     );
-};
+};g
 
 export default ReadMoreDetails;
